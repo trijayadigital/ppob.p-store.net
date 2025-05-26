@@ -4,11 +4,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
 import data from '@/data.json';
 
-const emit = defineEmits(['update:selectedGame', 'update:selectedVariant']);
+// Menggunakan layout products
+definePageMeta({
+  layout: 'products',
+});
 
-const selectedGame = ref('');
+const route = useRoute();
+const router = useRouter();
+
 const selectedVariant = ref('');
 
 // Form data
@@ -21,85 +27,61 @@ const formData = ref({
 // Data dari JSON file
 const games = ref(data.games);
 
-// Computed untuk mendapatkan game yang dipilih
+// Computed untuk mendapatkan game berdasarkan parameter route
 const selectedGameData = computed(() => {
-  return games.value.find((game) => game.id === selectedGame.value);
+  return games.value.find((game) => game.code === route.params.product);
 });
 
-const selectGame = (gameId) => {
-  selectedGame.value = gameId;
-  selectedVariant.value = ''; // Reset variant selection
-  // Reset form data
-  formData.value = {
-    userId: '',
-    zoneId: '',
-    email: '',
-  };
-  emit('update:selectedGame', gameId);
-};
+// Inject selectedProduct dari layout untuk footer
+const layoutSelectedProduct = inject('selectedProduct');
 
 const selectVariant = (variantCode) => {
   selectedVariant.value = variantCode;
-  emit('update:selectedVariant', variantCode);
+
+  // Update selected product untuk footer
+  const variant = selectedGameData.value?.variants.find((v) => v.code === variantCode);
+  if (layoutSelectedProduct && variant) {
+    layoutSelectedProduct.value = {
+      price_personal: variant.price.value,
+    };
+  }
 };
+
+const goBack = () => {
+  router.push('/voucher-game');
+};
+
+// Redirect jika game tidak ditemukan
+if (!selectedGameData.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Game tidak ditemukan',
+  });
+}
 </script>
 
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold text-gray-900 mb-2">Top Up Game Langsung</h2>
-      <p class="text-gray-600">Pilih game favorit Anda untuk melakukan top up voucher</p>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-      <Card
-        v-for="game in games"
-        :key="game.id"
-        class="group cursor-pointer border-2 overflow-hidden transition-all duration-200 hover:shadow-lg hover:scale-105"
-        :class="selectedGame === game.id ? 'border-primary bg-primary/5' : 'border-gray-200 hover:border-primary/50'"
-        @click="selectGame(game.id)"
-      >
-        <CardContent class="p-0">
-          <div class="relative overflow-hidden">
-            <NuxtImg
-              :src="game.image"
-              :alt="game.name"
-              class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-              loading="lazy"
-            />
-            <div class="absolute top-2 right-2">
-              <span class="inline-block px-2 py-1 bg-black/70 text-white text-xs rounded-full backdrop-blur-sm">
-                {{ game.category }}
-              </span>
-            </div>
-          </div>
-          <div class="p-4 space-y-2">
-            <div class="text-center text-lg font-semibold text-gray-900">
-              {{ game.name }}
-            </div>
-            <div class="text-center text-sm text-gray-600">
-              {{ game.description }}
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-
-    <!-- Tampilan Varian Voucher -->
-    <div v-if="selectedGameData" class="mt-8 space-y-6">
+  <Card>
+    <CardHeader>
       <div class="flex items-center gap-4">
+        <Button variant="outline" size="sm" @click="goBack" class="flex items-center gap-2">
+          <Icon name="lucide:arrow-left" size="16" />
+          <span>Kembali</span>
+        </Button>
         <div class="flex items-center gap-3">
           <NuxtImg :src="selectedGameData.image" :alt="selectedGameData.name" class="w-12 h-12 rounded-lg object-cover" />
           <div>
-            <h3 class="text-xl font-bold text-gray-900">{{ selectedGameData.name }}</h3>
-            <p class="text-sm text-gray-600">{{ selectedGameData.description }}</p>
+            <CardTitle>{{ selectedGameData.name }}</CardTitle>
+            <CardDescription>{{ selectedGameData.developer }}</CardDescription>
           </div>
         </div>
-        <Badge :class="selectedGameData.color" class="text-white">
-          {{ selectedGameData.category }}
+        <Badge class="bg-blue-500 text-white">
+          {{ selectedGameData.developer }}
         </Badge>
       </div>
+    </CardHeader>
 
+    <CardContent class="space-y-6">
       <!-- Varian Voucher -->
       <div class="space-y-4">
         <h4 class="text-lg font-semibold text-gray-900">Pilih Nominal</h4>
@@ -168,28 +150,7 @@ const selectVariant = (variantCode) => {
         <div v-if="selectedGameData.variants.some((v) => !v.name.includes('First Top Up') && !v.name.includes('Pass'))" class="space-y-3">
           <div class="flex items-center gap-2">
             <span class="text-yellow-500">⭐</span>
-            <h5 class="font-semibold text-gray-800">
-              Top Up
-              {{
-                selectedGameData.name.includes('Mobile Legends')
-                  ? 'Diamonds'
-                  : selectedGameData.name.includes('Free Fire')
-                  ? 'Diamonds'
-                  : selectedGameData.name.includes('PUBG')
-                  ? 'UC'
-                  : selectedGameData.name.includes('Genshin')
-                  ? 'Genesis Crystals'
-                  : selectedGameData.name.includes('Valorant')
-                  ? 'VP'
-                  : selectedGameData.name.includes('Call of Duty')
-                  ? 'CP'
-                  : selectedGameData.name.includes('Arena')
-                  ? 'Vouchers'
-                  : selectedGameData.name.includes('Honkai')
-                  ? 'Crystals'
-                  : 'Gems'
-              }}
-            </h5>
+            <h5 class="font-semibold text-gray-800">Top Up Regular</h5>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             <Card
@@ -242,16 +203,10 @@ const selectVariant = (variantCode) => {
           </CardHeader>
           <CardContent class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <!-- User ID -->
-              <div class="space-y-2">
-                <Label for="userId">{{ selectedGameData.userIdLabel }}</Label>
-                <Input id="userId" v-model="formData.userId" :placeholder="selectedGameData.userIdPlaceholder" class="w-full" />
-              </div>
-
-              <!-- Zone ID (jika diperlukan) -->
-              <div v-if="selectedGameData.requiresZoneId" class="space-y-2">
-                <Label for="zoneId">{{ selectedGameData.zoneIdLabel }}</Label>
-                <Input id="zoneId" v-model="formData.zoneId" :placeholder="selectedGameData.zoneIdPlaceholder" class="w-full" />
+              <!-- Dynamic inputs based on game configuration -->
+              <div v-for="input in selectedGameData.inputs" :key="input.name" class="space-y-2">
+                <Label :for="input.name">{{ input.title }}</Label>
+                <Input :id="input.name" v-model="formData[input.name]" :type="input.type" :placeholder="`Masukkan ${input.title}`" class="w-full" />
               </div>
             </div>
 
@@ -281,17 +236,7 @@ const selectVariant = (variantCode) => {
             </div>
           </CardContent>
         </Card>
-
-        <!-- Tombol Lanjutkan -->
-        <div class="flex justify-end">
-          <button
-            class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-            :disabled="!formData.userId || (selectedGameData.requiresZoneId && !formData.zoneId)"
-          >
-            Lanjutkan Pembayaran
-          </button>
-        </div>
       </div>
-    </div>
-  </div>
+    </CardContent>
+  </Card>
 </template>

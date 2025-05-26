@@ -1,0 +1,1293 @@
+{
+  "games": [
+    {
+      "id": "1",
+      "name": "Mobile Legends",
+      "code": "mobile-legends",
+      "developer": "Moonton",
+      "image": "/images/PDP_MLBB_Naruto.png",
+      "inputs": [
+        {
+          "name": "user_id",
+          "type": "number",
+          "title": "User ID",
+          "options": []
+        },
+        {
+          "name": "zone_id",
+          "type": "number",
+          "title": "Zone ID",
+          "options": []
+        }
+      ],
+      "instructions": "Tap menu profile di pojok kiri atas dari menu utama game buat lihat ID. Contoh: 12345678(1234)",
+      "variants": [
+        {
+          "code": "MLBB_ID_5",
+          "name": "5 (5+0) Diamonds",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 1499
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "MLBB_ID_11",
+          "name": "11 (10+1) Diamonds",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 2882
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "MLBB_ID_100",
+          "name": "100 (50+50) Diamonds - First Top Up",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 11463
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "MLBB_ID_WEEKLY",
+          "name": "Weekly Diamond Pass",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 22804
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Free Fire",
+      "code": "free-fire",
+      "developer": "Garena",
+      "image": "/images/PDP-FF.png",
+      "inputs": [
+        {
+          "name": "user_id",
+          "type": "number",
+          "title": "User ID",
+          "options": []
+        }
+      ],
+      "instructions": "Buka Free Fire, klik avatar di pojok kiri atas untuk melihat User ID Anda.",
+      "variants": [
+        {
+          "code": "FF_ID_50",
+          "name": "50 Diamonds",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 7500
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "FF_ID_100",
+          "name": "100 Diamonds",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 15000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "PUBG Mobile",
+      "code": "pubg-mobile",
+      "developer": "Tencent Games",
+      "image": "/images/PDP-PUBG.png",
+      "inputs": [
+        {
+          "name": "user_id",
+          "type": "number",
+          "title": "User ID",
+          "options": []
+        }
+      ],
+      "instructions": "Buka PUBG Mobile, masuk ke Settings > Basic untuk melihat User ID Anda.",
+      "variants": [
+        {
+          "code": "PUBG_ID_60",
+          "name": "60 UC",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 15000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Valorant",
+      "code": "valorant",
+      "developer": "Riot Games",
+      "image": "/images/PDP-VALORANT.png",
+      "inputs": [
+        {
+          "name": "riot_id",
+          "type": "text",
+          "title": "Riot ID",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan Riot ID Anda dengan format: NamaUser#TAG (contoh: Player123#1234)",
+      "variants": [
+        {
+          "code": "VAL_ID_420",
+          "name": "420 VP",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 50000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Genshin Impact",
+      "code": "genshin-impact",
+      "developer": "miHoYo",
+      "image": "/images/genshin-impact-button-fin-1601346152039.jpg",
+      "inputs": [
+        {
+          "name": "uid",
+          "type": "number",
+          "title": "UID",
+          "options": []
+        },
+        {
+          "name": "server",
+          "type": "select",
+          "title": "Server",
+          "options": [
+            {
+              "value": "os_asia",
+              "title": "Asia"
+            },
+            {
+              "value": "os_usa",
+              "title": "America"
+            },
+            {
+              "value": "os_euro",
+              "title": "Europe"
+            },
+            {
+              "value": "os_cht",
+              "title": "TW_HK_MO"
+            }
+          ]
+        }
+      ],
+      "instructions": "Buka Genshin Impact, tekan Paimon Menu > Settings > Account untuk melihat UID Anda.",
+      "variants": [
+        {
+          "code": "GI_ID_60",
+          "name": "60 Genesis Crystals",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 15000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Call of Duty Mobile",
+      "code": "cod-mobile",
+      "developer": "Activision",
+      "image": "/images/codm.jpg",
+      "inputs": [
+        {
+          "name": "user_id",
+          "type": "number",
+          "title": "User ID",
+          "options": []
+        }
+      ],
+      "instructions": "Buka Call of Duty Mobile, masuk ke Settings > Legal and Privacy untuk melihat User ID Anda.",
+      "variants": [
+        {
+          "code": "COD_ID_80",
+          "name": "80 CP",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 15000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "COD_ID_400",
+          "name": "400 CP",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 75000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "COD_ID_BATTLE_PASS",
+          "name": "Battle Pass Premium",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 150000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Arena of Valor",
+      "code": "aov",
+      "developer": "Tencent Games",
+      "image": "/images/aov.jpg",
+      "inputs": [
+        {
+          "name": "user_id",
+          "type": "number",
+          "title": "User ID",
+          "options": []
+        }
+      ],
+      "instructions": "Buka Arena of Valor, masuk ke Profile untuk melihat User ID Anda.",
+      "variants": [
+        {
+          "code": "AOV_ID_50",
+          "name": "50 Vouchers",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 12000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "AOV_ID_250",
+          "name": "250 Vouchers",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 60000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Honkai Impact 3rd",
+      "code": "honkai-impact",
+      "developer": "miHoYo",
+      "image": "/images/honkai.jpg",
+      "inputs": [
+        {
+          "name": "uid",
+          "type": "number",
+          "title": "UID",
+          "options": []
+        },
+        {
+          "name": "server",
+          "type": "select",
+          "title": "Server",
+          "options": [
+            {
+              "value": "asia",
+              "title": "Asia"
+            },
+            {
+              "value": "america",
+              "title": "America"
+            },
+            {
+              "value": "europe",
+              "title": "Europe"
+            }
+          ]
+        }
+      ],
+      "instructions": "Buka Honkai Impact 3rd, masuk ke Settings > Account untuk melihat UID Anda.",
+      "variants": [
+        {
+          "code": "HI3_ID_60",
+          "name": "60 Crystals",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 15000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "HI3_ID_330",
+          "name": "330 Crystals",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 75000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "HI3_ID_MONTHLY",
+          "name": "Monthly Card",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 75000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Clash of Clans",
+      "code": "clash-of-clans",
+      "developer": "Supercell",
+      "image": "/images/PDP-PUBG.png",
+      "inputs": [
+        {
+          "name": "player_tag",
+          "type": "text",
+          "title": "Player Tag",
+          "options": []
+        }
+      ],
+      "instructions": "Buka Clash of Clans, tap Settings > Help and Support untuk melihat Player Tag Anda (contoh: #ABC123DEF).",
+      "variants": [
+        {
+          "code": "COC_ID_80",
+          "name": "80 Gems",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 15000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "COC_ID_500",
+          "name": "500 Gems",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 75000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "COC_ID_GOLD_PASS",
+          "name": "Gold Pass",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 75000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Roblox",
+      "code": "roblox",
+      "developer": "Roblox Corporation",
+      "image": "/images/PDP_MLBB_Naruto.png",
+      "inputs": [
+        {
+          "name": "username",
+          "type": "text",
+          "title": "Username",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan username Roblox Anda (bukan display name).",
+      "variants": [
+        {
+          "code": "ROBLOX_ID_80",
+          "name": "80 Robux",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 15000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "ROBLOX_ID_400",
+          "name": "400 Robux",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 60000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "ROBLOX_ID_800",
+          "name": "800 Robux",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 120000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "ROBLOX_ID_PREMIUM",
+          "name": "Roblox Premium - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 75000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    }
+  ],
+  "entertainments": [
+    {
+      "id": "1",
+      "name": "Netflix",
+      "code": "netflix",
+      "developer": "Netflix Inc.",
+      "image": "/images/netflix.png",
+      "inputs": [
+        {
+          "name": "email",
+          "type": "email",
+          "title": "Email",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan email yang terdaftar di akun Netflix Anda.",
+      "variants": [
+        {
+          "code": "NETFLIX_ID_MOBILE",
+          "name": "Netflix Mobile - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 54000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "NETFLIX_ID_BASIC",
+          "name": "Netflix Basic - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 120000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "NETFLIX_ID_STANDARD",
+          "name": "Netflix Standard - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 153000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "NETFLIX_ID_PREMIUM",
+          "name": "Netflix Premium - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 186000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Disney+ Hotstar",
+      "code": "disney-plus",
+      "developer": "Disney",
+      "image": "/images/disney.png",
+      "inputs": [
+        {
+          "name": "email",
+          "type": "email",
+          "title": "Email",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan email yang terdaftar di akun Disney+ Hotstar Anda.",
+      "variants": [
+        {
+          "code": "DISNEY_ID_MONTHLY",
+          "name": "Disney+ Hotstar - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 39000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "DISNEY_ID_YEARLY",
+          "name": "Disney+ Hotstar - 1 Tahun",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 199000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Spotify Premium",
+      "code": "spotify",
+      "developer": "Spotify",
+      "image": "/images/spotify.png",
+      "inputs": [
+        {
+          "name": "email",
+          "type": "email",
+          "title": "Email",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan email yang terdaftar di akun Spotify Anda.",
+      "variants": [
+        {
+          "code": "SPOTIFY_ID_INDIVIDUAL",
+          "name": "Spotify Premium Individual - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 54990
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "SPOTIFY_ID_FAMILY",
+          "name": "Spotify Premium Family - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 83990
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "YouTube Premium",
+      "code": "youtube-premium",
+      "developer": "Google",
+      "image": "/images/youtube.png",
+      "inputs": [
+        {
+          "name": "email",
+          "type": "email",
+          "title": "Email Google",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan email Google yang terdaftar di akun YouTube Anda.",
+      "variants": [
+        {
+          "code": "YT_ID_INDIVIDUAL",
+          "name": "YouTube Premium Individual - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 59000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "YT_ID_FAMILY",
+          "name": "YouTube Premium Family - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 99000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Vidio Premier",
+      "code": "vidio-premier",
+      "developer": "Vidio",
+      "image": "/images/vidio.png",
+      "inputs": [
+        {
+          "name": "account",
+          "type": "text",
+          "title": "Email/No. HP",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan email atau nomor HP yang terdaftar di akun Vidio Anda.",
+      "variants": [
+        {
+          "code": "VIDIO_ID_MONTHLY",
+          "name": "Vidio Premier - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 29000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "VIDIO_ID_QUARTERLY",
+          "name": "Vidio Premier - 3 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 79000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "iflix",
+      "code": "iflix",
+      "developer": "iflix",
+      "image": "/images/iflix.png",
+      "inputs": [
+        {
+          "name": "email",
+          "type": "email",
+          "title": "Email",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan email yang terdaftar di akun iflix Anda.",
+      "variants": [
+        {
+          "code": "IFLIX_ID_VIP",
+          "name": "iflix VIP - 1 Bulan",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 39000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    }
+  ],
+  "bills": [
+    {
+      "id": "1",
+      "name": "PLN Prepaid",
+      "code": "pln-prepaid",
+      "developer": "PT PLN (Persero)",
+      "image": "/images/pln.png",
+      "inputs": [
+        {
+          "name": "meter_number",
+          "type": "number",
+          "title": "Nomor Meter",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor meter PLN yang tertera pada meteran listrik Anda.",
+      "variants": [
+        {
+          "code": "PLN_ID_20K",
+          "name": "Token PLN 20.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 22500
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "PLN_ID_50K",
+          "name": "Token PLN 50.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 52500
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "PLN_ID_100K",
+          "name": "Token PLN 100.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 102500
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "PLN_ID_200K",
+          "name": "Token PLN 200.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 202500
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "PLN_ID_500K",
+          "name": "Token PLN 500.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 502500
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "PDAM",
+      "code": "pdam",
+      "developer": "Perusahaan Daerah Air Minum",
+      "image": "/images/pdam.png",
+      "inputs": [
+        {
+          "name": "customer_number",
+          "type": "number",
+          "title": "Nomor Pelanggan",
+          "options": []
+        },
+        {
+          "name": "region",
+          "type": "select",
+          "title": "Wilayah",
+          "options": [
+            {
+              "value": "jakarta",
+              "title": "DKI Jakarta"
+            },
+            {
+              "value": "bandung",
+              "title": "Kota Bandung"
+            },
+            {
+              "value": "surabaya",
+              "title": "Kota Surabaya"
+            },
+            {
+              "value": "medan",
+              "title": "Kota Medan"
+            },
+            {
+              "value": "semarang",
+              "title": "Kota Semarang"
+            }
+          ]
+        }
+      ],
+      "instructions": "Masukkan nomor pelanggan PDAM yang tertera pada tagihan air Anda.",
+      "variants": [
+        {
+          "code": "PDAM_JAKARTA",
+          "name": "PDAM DKI Jakarta",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 2500
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "PDAM_BANDUNG",
+          "name": "PDAM Kota Bandung",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 2500
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "PDAM_SURABAYA",
+          "name": "PDAM Kota Surabaya",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 2500
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "BPJS Kesehatan",
+      "code": "bpjs-kesehatan",
+      "developer": "BPJS Kesehatan",
+      "image": "/images/bpjs.png",
+      "inputs": [
+        {
+          "name": "card_number",
+          "type": "number",
+          "title": "Nomor Kartu",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor kartu BPJS Kesehatan yang tertera pada kartu Anda.",
+      "variants": [
+        {
+          "code": "BPJS_KELAS_1",
+          "name": "BPJS Kesehatan Kelas 1",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 150000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "BPJS_KELAS_2",
+          "name": "BPJS Kesehatan Kelas 2",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 100000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "BPJS_KELAS_3",
+          "name": "BPJS Kesehatan Kelas 3",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 42000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Telkom IndiHome",
+      "code": "telkom-indihome",
+      "developer": "PT Telkom Indonesia",
+      "image": "/images/indihome.png",
+      "inputs": [
+        {
+          "name": "customer_number",
+          "type": "number",
+          "title": "Nomor Pelanggan",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor pelanggan IndiHome yang tertera pada tagihan Anda.",
+      "variants": [
+        {
+          "code": "INDIHOME_PAYMENT",
+          "name": "Pembayaran Tagihan IndiHome",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 2500
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "First Media",
+      "code": "first-media",
+      "developer": "PT First Media Tbk",
+      "image": "/images/firstmedia.png",
+      "inputs": [
+        {
+          "name": "customer_id",
+          "type": "text",
+          "title": "Customer ID",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan Customer ID First Media yang tertera pada tagihan Anda.",
+      "variants": [
+        {
+          "code": "FIRSTMEDIA_PAYMENT",
+          "name": "Pembayaran Tagihan First Media",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 2500
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Biznet Home",
+      "code": "biznet",
+      "developer": "PT Supra Primatama Nusantara",
+      "image": "/images/biznet.png",
+      "inputs": [
+        {
+          "name": "customer_id",
+          "type": "text",
+          "title": "Customer ID",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan Customer ID Biznet Home yang tertera pada tagihan Anda.",
+      "variants": [
+        {
+          "code": "BIZNET_PAYMENT",
+          "name": "Pembayaran Tagihan Biznet Home",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 2500
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    }
+  ],
+  "others": [
+    {
+      "id": "1",
+      "name": "Grab Driver",
+      "code": "grab-driver",
+      "developer": "Grab",
+      "image": "/images/grab.png",
+      "inputs": [
+        {
+          "name": "phone_number",
+          "type": "tel",
+          "title": "Nomor HP",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor HP yang terdaftar sebagai driver Grab.",
+      "variants": [
+        {
+          "code": "GRAB_SALDO_25K",
+          "name": "Saldo GrabPay 25.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 26000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "GRAB_SALDO_50K",
+          "name": "Saldo GrabPay 50.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 51000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "GRAB_SALDO_100K",
+          "name": "Saldo GrabPay 100.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 101000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Gojek Driver",
+      "code": "gojek-driver",
+      "developer": "Gojek",
+      "image": "/images/gojek.png",
+      "inputs": [
+        {
+          "name": "phone_number",
+          "type": "tel",
+          "title": "Nomor HP",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor HP yang terdaftar sebagai driver Gojek.",
+      "variants": [
+        {
+          "code": "GOPAY_SALDO_25K",
+          "name": "Saldo GoPay 25.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 26000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "GOPAY_SALDO_50K",
+          "name": "Saldo GoPay 50.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 51000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "ShopeePay",
+      "code": "shopee-pay",
+      "developer": "Shopee",
+      "image": "/images/shopeepay.png",
+      "inputs": [
+        {
+          "name": "phone_number",
+          "type": "tel",
+          "title": "Nomor HP",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor HP yang terdaftar di ShopeePay Anda.",
+      "variants": [
+        {
+          "code": "SHOPEEPAY_25K",
+          "name": "ShopeePay 25.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 26000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "SHOPEEPAY_50K",
+          "name": "ShopeePay 50.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 51000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "DANA",
+      "code": "dana",
+      "developer": "DANA Indonesia",
+      "image": "/images/dana.png",
+      "inputs": [
+        {
+          "name": "phone_number",
+          "type": "tel",
+          "title": "Nomor HP",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor HP yang terdaftar di DANA Anda.",
+      "variants": [
+        {
+          "code": "DANA_25K",
+          "name": "DANA 25.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 26000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "DANA_50K",
+          "name": "DANA 50.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 51000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "OVO",
+      "code": "ovo",
+      "developer": "PT Visionet Internasional",
+      "image": "/images/ovo.png",
+      "inputs": [
+        {
+          "name": "phone_number",
+          "type": "tel",
+          "title": "Nomor HP",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor HP yang terdaftar di OVO Anda.",
+      "variants": [
+        {
+          "code": "OVO_25K",
+          "name": "OVO 25.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 26000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "OVO_50K",
+          "name": "OVO 50.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 51000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "LinkAja",
+      "code": "linkaja",
+      "developer": "PT Fintek Karya Nusantara",
+      "image": "/images/linkaja.png",
+      "inputs": [
+        {
+          "name": "phone_number",
+          "type": "tel",
+          "title": "Nomor HP",
+          "options": []
+        }
+      ],
+      "instructions": "Masukkan nomor HP yang terdaftar di LinkAja Anda.",
+      "variants": [
+        {
+          "code": "LINKAJA_25K",
+          "name": "LinkAja 25.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 26000
+          },
+          "duration": 0,
+          "region": "ID"
+        },
+        {
+          "code": "LINKAJA_50K",
+          "name": "LinkAja 50.000",
+          "status": "ACTIVE",
+          "price": {
+            "currency": "IDR",
+            "value": 51000
+          },
+          "duration": 0,
+          "region": "ID"
+        }
+      ]
+    }
+  ]
+}
