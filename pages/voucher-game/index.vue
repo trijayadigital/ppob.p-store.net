@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import data from '@/data.json';
 import { useRouter } from 'nuxt/app';
 
@@ -20,42 +20,43 @@ const selectGame = (gameCode) => {
 </script>
 
 <template>
-  <Card>
-    <CardHeader>
-      <CardTitle>Voucher Game</CardTitle>
-      <CardDescription>Pilih game favorit Anda untuk melakukan top up voucher</CardDescription>
-    </CardHeader>
+  <!-- Main Card Container -->
+  <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+    <!-- Card Header -->
     <ScrollArea class="h-full">
-      <CardContent class="space-y-6">
+      <div class="flex flex-col space-y-1.5 p-6">
+        <h3 class="text-2xl font-semibold leading-none tracking-tight">Voucher Game</h3>
+        <p class="text-sm text-muted-foreground">Pilih game favorit Anda untuk melakukan top up voucher</p>
+      </div>
+
+      <!-- Card Content -->
+      <div class="p-6 pt-0 space-y-6">
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <Card
+          <!-- Game Card Items -->
+          <div
             v-for="game in games"
             :key="game.id"
-            class="group cursor-pointer p-0"
-            :class="selectedGame === game.id ? 'border-primary bg-primary/5' : 'border-gray-200 hover:border-primary/50'"
+            class="group cursor-pointer rounded-lg border bg-card text-card-foreground hover:ring-2 hover:ring-primary hover:bg-primary/10 shadow-sm transition-all duration-300 hover:shadow-lg"
+            :class="selectedGame === game.id ? 'ring-2 ring-primary bg-primary/5' : ''"
             @click="selectGame(game.code)"
           >
-            <CardContent class="p-4">
+            <!-- Game Card Content -->
+            <div class="p-2">
               <div class="relative overflow-hidden rounded-lg mb-4">
-                <NuxtImg
-                  :src="game.image"
-                  :alt="game.name"
-                  class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                  loading="lazy"
-                />
+                <NuxtImg :src="game.image" :alt="game.name" class="w-full h-48 object-cover transition-transform duration-300" loading="lazy" />
               </div>
               <div class="text-center">
-                <div class="font-bold">
+                <div class="font-bold text-card-foreground">
                   {{ game.name }}
                 </div>
-                <div class="text-sm">
+                <div class="text-sm text-muted-foreground">
                   {{ game.developer }}
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
-      </CardContent>
+      </div>
     </ScrollArea>
-  </Card>
+  </div>
 </template>

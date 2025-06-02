@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen flex flex-col text-gray-700 font-display bg-slate-100 gap-2">
     <!-- Header -->
-    <header class="flex-shrink-0 bg-white shadow p-8">
+    <header class="flex-shrink-0 bg-white shadow p-5">
       <div class="max-w-6xl mx-auto flex items-center justify-between">
         <div class="flex items-center divide-x divide-gray-300 text-gray-500">
           <NuxtLink to="/">
@@ -17,69 +17,26 @@
     </header>
 
     <!-- Navigation Tabs -->
-    <div class="flex-shrink-0 max-w-6xl mx-auto w-full flex items-center justify-center bg-white rounded-lg shadow-sm p-2">
-      <div class="">
-        <div class="flex items-center space-x-1">
-          <NuxtLink
-            to="/pulsa"
-            class="flex flex-col items-center px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50"
-            :class="$route.path === '/pulsa' ? 'text-primary bg-primary/10' : 'text-gray-600'"
-          >
-            <Icon name="lucide:smartphone" size="24" />
-            <span class="text-sm font-medium mt-1">Pulsa</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/paket-data"
-            class="flex flex-col items-center px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50"
-            :class="$route.path === '/paket-data' ? 'text-primary bg-primary/10' : 'text-gray-600'"
-          >
-            <Icon name="lucide:wifi" size="24" />
-            <span class="text-sm font-medium mt-1">Paket Data</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/voucher-game"
-            class="flex flex-col items-center px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50"
-            :class="$route.path.startsWith('/voucher-game') ? 'text-primary bg-primary/10' : 'text-gray-600'"
-          >
-            <Icon name="lucide:gamepad" size="24" />
-            <span class="text-sm font-medium mt-1">Voucher Game</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/tagihan"
-            class="flex flex-col items-center px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50"
-            :class="$route.path === '/tagihan' ? 'text-primary bg-primary/10' : 'text-gray-600'"
-          >
-            <Icon name="heroicons:bolt-solid" size="24" />
-            <span class="text-sm font-medium mt-1">Tagihan</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/entertainment"
-            class="flex flex-col items-center px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50"
-            :class="$route.path === '/entertainment' ? 'text-primary bg-primary/10' : 'text-gray-600'"
-          >
-            <Icon name="lucide:music" size="24" />
-            <span class="text-sm font-medium mt-1">Entertainment</span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/lainnya"
-            class="flex flex-col items-center px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50"
-            :class="$route.path === '/lainnya' ? 'text-primary bg-primary/10' : 'text-gray-600'"
-          >
-            <Icon name="lucide:more-horizontal" size="24" />
-            <span class="text-sm font-medium mt-1">Lainnya</span>
-          </NuxtLink>
-        </div>
+    <div class="flex-shrink-0 max-w-6xl mx-auto w-full bg-white rounded-lg shadow-sm p-1">
+      <div class="flex items-center justify-between w-full">
+        <NuxtLink
+          v-for="link in navigationLinks"
+          :key="link.to"
+          :to="link.to"
+          class="flex flex-col items-center flex-1 py-2 rounded-lg transition-all duration-200"
+          :class="isLinkActive(link) ? 'text-primary bg-primary/10' : 'text-gray-600'"
+        >
+          <Icon :name="link.icon" size="24" />
+          <span class="text-xs font-medium mt-1">{{ link.label }}</span>
+        </NuxtLink>
       </div>
     </div>
 
     <!-- Main Content -->
-    <div class="flex-1 overflow-hidden max-w-6xl mx-auto h-full">
-      <slot />
+    <div class="flex-1 overflow-hidden w-6xl mx-auto h-full">
+      <ScrollArea class="h-full">
+        <slot />
+      </ScrollArea>
     </div>
 
     <!-- Footer -->
@@ -108,6 +65,55 @@ const formattedPrice = computed(() => {
   if (!selectedProduct.value || !selectedProduct.value.price_personal) return 'Rp 0';
   return `Rp ${Number(selectedProduct.value.price_personal).toLocaleString('id-ID')}`;
 });
+
+// Navigation Links Configuration
+const navigationLinks = [
+  {
+    to: '/pulsa',
+    icon: 'lucide:smartphone',
+    label: 'Pulsa',
+    matchType: 'exact', // exact match for route path
+  },
+  {
+    to: '/paket-data',
+    icon: 'lucide:wifi',
+    label: 'Paket Data',
+    matchType: 'exact',
+  },
+  {
+    to: '/voucher-game',
+    icon: 'lucide:gamepad',
+    label: 'Voucher Game',
+    matchType: 'startsWith', // starts with for nested routes
+  },
+  {
+    to: '/tagihan',
+    icon: 'heroicons:bolt-solid',
+    label: 'Tagihan',
+    matchType: 'exact',
+  },
+  {
+    to: '/entertainment',
+    icon: 'lucide:music',
+    label: 'Entertainment',
+    matchType: 'exact',
+  },
+  {
+    to: '/lainnya',
+    icon: 'lucide:more-horizontal',
+    label: 'Lainnya',
+    matchType: 'exact',
+  },
+];
+
+// Function to check if link is active
+const isLinkActive = (link) => {
+  const route = useRoute();
+  if (link.matchType === 'startsWith') {
+    return route.path.startsWith(link.to);
+  }
+  return route.path === link.to;
+};
 
 // Provide selectedProduct to child components
 provide('selectedProduct', selectedProduct);

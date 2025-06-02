@@ -1,8 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
+import ProductSelector from '@/components/ProductSelector.vue';
 
 // Menggunakan layout products
 definePageMeta({
@@ -72,30 +71,9 @@ watch(selectedProduct, (newValue) => {
         </div>
       </div>
 
-      <div v-if="products.length > 0" class="space-y-4">
-        <RadioGroup v-model="selectedProduct" class="grid grid-cols-4 gap-2">
-          <div v-for="product in products" :key="product.product_id" class="relative">
-            <RadioGroupItem :value="product.product_id" class="peer sr-only" :id="product.product_id" />
-            <Label
-              :for="product.product_id"
-              class="flex justify-between p-4 border rounded-lg cursor-pointer peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/10"
-            >
-              <div class="flex flex-col gap-y-1">
-                <span class="text-sm font-bold">{{ product.product_name }}</span>
-                <span class="text-xs text-gray-600">{{ product.desc }}</span>
-              </div>
-              <span class="text-primary text-base font-bold">Rp {{ Number(product.price_personal).toLocaleString('id-ID') }}</span>
-            </Label>
-          </div>
-        </RadioGroup>
-      </div>
-
-      <template v-else>
-        <div class="flex flex-col items-center justify-center h-full p-6 gap-y-4">
-          <img src="/empty.png" alt="Coming Soon" class="w-48" />
-          <p class="text-gray-400 font-medium">Masukkan nomor telepon untuk melihat paket data yang tersedia</p>
-        </div>
-      </template>
+      <ProductSelector v-model="selectedProduct" :products="products" :columns="3" :show-description="true">
+        <template #empty-message> Masukkan nomor telepon untuk melihat paket data yang tersedia </template>
+      </ProductSelector>
     </CardContent>
   </Card>
 </template>
