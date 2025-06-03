@@ -17,7 +17,7 @@
     </header>
 
     <!-- Navigation Tabs -->
-    <div class="flex-shrink-0 max-w-6xl mx-auto w-full bg-white rounded-lg shadow-sm p-1">
+    <div v-if="isFirstLevelRoute" class="flex-shrink-0 max-w-6xl mx-auto w-full bg-white rounded-lg shadow-sm p-1">
       <div class="flex items-center justify-between w-full">
         <NuxtLink
           v-for="link in navigationLinks"
@@ -64,6 +64,13 @@ const selectedProduct = ref(null);
 const formattedPrice = computed(() => {
   if (!selectedProduct.value || !selectedProduct.value.price_personal) return 'Rp 0';
   return `Rp ${Number(selectedProduct.value.price_personal).toLocaleString('id-ID')}`;
+});
+
+// Check if current route is first level (not nested)
+const isFirstLevelRoute = computed(() => {
+  const route = useRoute();
+  const pathSegments = route.path.split('/').filter((segment) => segment !== '');
+  return pathSegments.length === 1;
 });
 
 // Navigation Links Configuration

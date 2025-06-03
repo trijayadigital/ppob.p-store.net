@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import ProductSelector from '@/components/ProductSelector.vue';
 import data from '@/data.json';
 
 // Menggunakan layout products
@@ -30,6 +31,43 @@ const games = ref(data.games);
 // Computed untuk mendapatkan game berdasarkan parameter route
 const selectedGameData = computed(() => {
   return games.value.find((game) => game.code === route.params.product);
+});
+
+// Computed untuk memformat variants data untuk ProductSelector
+const firstTopUpVariants = computed(() => {
+  if (!selectedGameData.value) return [];
+  return selectedGameData.value.variants
+    .filter((v) => v.name.includes('First Top Up'))
+    .map((variant) => ({
+      product_id: variant.code,
+      product_name: variant.name,
+      price_personal: variant.price.value,
+      desc: `${variant.duration === 0 ? 'Instan' : `${variant.duration} hari`} • ${variant.region}`,
+    }));
+});
+
+const specialItemsVariants = computed(() => {
+  if (!selectedGameData.value) return [];
+  return selectedGameData.value.variants
+    .filter((v) => v.name.includes('Pass'))
+    .map((variant) => ({
+      product_id: variant.code,
+      product_name: variant.name,
+      price_personal: variant.price.value,
+      desc: `${variant.duration === 0 ? 'Instan' : `${variant.duration} hari`} • ${variant.region}`,
+    }));
+});
+
+const regularVariants = computed(() => {
+  if (!selectedGameData.value) return [];
+  return selectedGameData.value.variants
+    .filter((v) => !v.name.includes('First Top Up') && !v.name.includes('Pass'))
+    .map((variant) => ({
+      product_id: variant.code,
+      product_name: variant.name,
+      price_personal: variant.price.value,
+      desc: `${variant.duration === 0 ? 'Instan' : `${variant.duration} hari`} • ${variant.region}`,
+    }));
 });
 
 // Inject selectedProduct dari layout untuk footer
@@ -61,23 +99,45 @@ if (!selectedGameData.value) {
 </script>
 
 <template>
+  <div class="flex items-center gap-2 my-4 ml-4">
+    <nav aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li>
+          <NuxtLink to="/" class="hover:text-gray-700 transition-colors"> Home </NuxtLink>
+        </li>
+        <li>
+          <Icon name="lucide:chevron-right" size="14" class="text-gray-400" />
+        </li>
+        <li>
+          <NuxtLink to="/voucher-game" class="hover:text-gray-700 transition-colors"> Voucher Game </NuxtLink>
+        </li>
+        <li>
+          <Icon name="lucide:chevron-right" size="14" class="text-gray-400" />
+        </li>
+        <li class="text-gray-700 font-medium">
+          {{ selectedGameData.name }}
+        </li>
+      </ol>
+    </nav>
+  </div>
   <Card>
     <CardHeader>
-      <div class="flex items-center gap-4">
-        <Button variant="outline" size="sm" @click="goBack" class="flex items-center gap-2">
-          <Icon name="lucide:arrow-left" size="16" />
-          <span>Kembali</span>
-        </Button>
-        <div class="flex items-center gap-3">
-          <NuxtImg :src="selectedGameData.image" :alt="selectedGameData.name" class="w-12 h-12 rounded-lg object-cover" />
-          <div>
-            <CardTitle>{{ selectedGameData.name }}</CardTitle>
-            <CardDescription>{{ selectedGameData.developer }}</CardDescription>
+      <div class="flex flex-col items-start gap-4">
+        <div class="flex gap-6">
+          <NuxtImg :src="selectedGameData.image" :alt="selectedGameData.name" class="size-48 rounded-lg object-cover" />
+          <div class="flex flex-col gap-1">
+            <div class="text-lg font-bold">{{ selectedGameData.name }}</div>
+            <div class="text-sm text-gray-500">{{ selectedGameData.developer }}</div>
+            <div class="text-xs text-gray-600 space-y-1">
+              <div class="font-medium text-gray-700 mb-2">Cara Top Up:</div>
+              <ol class="list-decimal list-inside space-y-1 text-xs">
+                <li v-for="(step, index) in selectedGameData.how_to" :key="index" class="text-gray-600">
+                  {{ step }}
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
-        <Badge class="bg-blue-500 text-white">
-          {{ selectedGameData.developer }}
-        </Badge>
       </div>
     </CardHeader>
 
@@ -87,93 +147,30 @@ if (!selectedGameData.value) {
         <h4 class="text-lg font-semibold text-gray-900">Pilih Nominal</h4>
 
         <!-- First Top Up Section -->
-        <div v-if="selectedGameData.variants.some((v) => v.name.includes('First Top Up'))" class="space-y-3">
+        <div v-if="firstTopUpVariants.length > 0" class="space-y-3">
           <div class="flex items-center gap-2">
             <span class="text-red-500">🔥</span>
             <h5 class="font-semibold text-gray-800">First Top Up (Double Diamonds)</h5>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <Card
-              v-for="variant in selectedGameData.variants.filter((v) => v.name.includes('First Top Up'))"
-              :key="variant.code"
-              class="cursor-pointer border-2 transition-all duration-200 hover:shadow-md"
-              :class="selectedVariant === variant.code ? 'border-primary bg-primary/5' : 'border-gray-200 hover:border-primary/50'"
-              @click="selectVariant(variant.code)"
-            >
-              <CardContent class="p-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-                    <span class="text-white text-xl">💎</span>
-                  </div>
-                  <div class="flex-1">
-                    <h6 class="font-semibold text-sm text-gray-900">{{ variant.name }}</h6>
-                    <p class="text-lg font-bold text-orange-600">Rp {{ variant.price.value.toLocaleString('id-ID') }}</p>
-                  </div>
-                  <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full hover:bg-gray-200">INSTANT</button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <ProductSelector :products="firstTopUpVariants" v-model="selectedVariant" :columns="4" :show-description="true" />
         </div>
 
         <!-- Special Items Section -->
-        <div v-if="selectedGameData.variants.some((v) => v.name.includes('Pass'))" class="space-y-3">
+        <div v-if="specialItemsVariants.length > 0" class="space-y-3">
           <div class="flex items-center gap-2">
             <span class="text-orange-500">🔥</span>
             <h5 class="font-semibold text-gray-800">Special Items</h5>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <Card
-              v-for="variant in selectedGameData.variants.filter((v) => v.name.includes('Pass'))"
-              :key="variant.code"
-              class="cursor-pointer border-2 transition-all duration-200 hover:shadow-md"
-              :class="selectedVariant === variant.code ? 'border-primary bg-primary/5' : 'border-gray-200 hover:border-primary/50'"
-              @click="selectVariant(variant.code)"
-            >
-              <CardContent class="p-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
-                    <span class="text-white text-xl">🎫</span>
-                  </div>
-                  <div class="flex-1">
-                    <h6 class="font-semibold text-sm text-gray-900">{{ variant.name }}</h6>
-                    <p class="text-lg font-bold text-orange-600">Rp {{ variant.price.value.toLocaleString('id-ID') }}</p>
-                  </div>
-                  <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full hover:bg-gray-200">INSTANT</button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <ProductSelector :products="specialItemsVariants" v-model="selectedVariant" :columns="4" :show-description="true" />
         </div>
 
         <!-- Regular Top Up Section -->
-        <div v-if="selectedGameData.variants.some((v) => !v.name.includes('First Top Up') && !v.name.includes('Pass'))" class="space-y-3">
+        <div v-if="regularVariants.length > 0" class="space-y-3">
           <div class="flex items-center gap-2">
             <span class="text-yellow-500">⭐</span>
             <h5 class="font-semibold text-gray-800">Top Up Regular</h5>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <Card
-              v-for="variant in selectedGameData.variants.filter((v) => !v.name.includes('First Top Up') && !v.name.includes('Pass'))"
-              :key="variant.code"
-              class="cursor-pointer border-2 transition-all duration-200 hover:shadow-md"
-              :class="selectedVariant === variant.code ? 'border-primary bg-primary/5' : 'border-gray-200 hover:border-primary/50'"
-              @click="selectVariant(variant.code)"
-            >
-              <CardContent class="p-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-                    <span class="text-white text-xl">💎</span>
-                  </div>
-                  <div class="flex-1">
-                    <h6 class="font-semibold text-sm text-gray-900">{{ variant.name }}</h6>
-                    <p class="text-lg font-bold text-orange-600">Rp {{ variant.price.value.toLocaleString('id-ID') }}</p>
-                  </div>
-                  <button class="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full hover:bg-gray-200">INSTANT</button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <ProductSelector :products="regularVariants" v-model="selectedVariant" :columns="4" :show-description="true" />
         </div>
       </div>
 
